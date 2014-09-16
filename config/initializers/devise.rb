@@ -13,7 +13,7 @@ Devise.setup do |config|
   config.mailer_sender = 'sajibnstu@gmail.com'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+   config.mailer = 'Devise::Mailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -260,4 +260,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   
   config.authentication_keys = [ :login ]
+  config.allow_unconfirmed_access_for = 365.days
+  
 end

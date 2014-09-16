@@ -36,14 +36,17 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost:4000' }
   config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :address => "smtp.gmail.com",
-  :port => 587,
-  :domain => 'gmail.com',
-  :user_name => '<your username>',
-  :password => '<your password>',
-  :authentication => 'plain',
-  :enable_starttls_auto => true } 
+  config.action_mailer.default :charset => "utf-8"
+config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  ActionMailer::Base.smtp_settings = {
+    address: "smtp.gmail.com", #this is you remote mail server, if you do not specify it rails will use mail server installed in your localhost
+    port: 587, # the port at which mail server is running, for local host it is at 25
+    #domain: "gmail.com", # just giving a domain name to you smtp server, you can use any name
+    authentication: "login", # If your mail server requires authentication, you need to specify the authentication type here.This is a symbol and one of :plain, :login, :cram_md5.
+    enable_starttls_auto: true,
+    user_name: "my_user_name",
+    password: "my_password"
+  }
+  
 end
